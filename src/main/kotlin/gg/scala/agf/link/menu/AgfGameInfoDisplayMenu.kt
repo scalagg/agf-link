@@ -11,6 +11,8 @@ import net.evilblock.cubed.util.bukkit.Constants
 import net.evilblock.cubed.util.bukkit.Tasks
 import org.bukkit.Material
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.ClickType
+import org.bukkit.inventory.InventoryView
 
 /**
  * @author GrowlyX
@@ -79,15 +81,29 @@ class AgfGameInfoDisplayMenu(
 
         override fun getDescription(player: Player): List<String>
         {
-            return listOf(
+            return mutableListOf(
                 "${CC.GRAY}Players: ${CC.WHITE}${
                     serverInstance.onlinePlayers
                 }/${serverInstance.maxPlayers}",
                 "",
                 getStatus(),
                 "",
-                "${CC.YELLOW}Click to connect."
-            )
+            ).also {
+                it.addAll(getInability())
+            }
+        }
+
+        override fun clicked(player: Player, slot: Int, clickType: ClickType, view: InventoryView)
+        {
+            player.performCommand("join ${serverInstance.serverId}")
+        }
+
+        private fun getInability() = if (serverInstance.whitelisted)
+        {
+            listOf("${CC.RED}You cannot join a", "${CC.RED}whitelisted server.")
+        } else
+        {
+            listOf("${CC.YELLOW}Click to connect.")
         }
 
         private fun getStatus() = when (gameState)
