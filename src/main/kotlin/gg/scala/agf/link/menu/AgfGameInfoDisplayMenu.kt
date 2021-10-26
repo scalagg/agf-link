@@ -38,6 +38,11 @@ class AgfGameInfoDisplayMenu(
             val servers = AgfGameInfoUpdater.gameInfo[agfGameType]
 
             servers?.forEach { gameInfo ->
+                if (it.size == 7)
+                {
+                    return@forEach
+                }
+
                 it[it.size + 10] = GameInfoButton(gameInfo)
             }
         }
