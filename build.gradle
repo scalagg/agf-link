@@ -16,8 +16,6 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"
-
-    compileOnly 'me.clip:placeholderapi:2.10.10'
     compileOnly "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
 
     compileOnly fileTree(dir: "lib")

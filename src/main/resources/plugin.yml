@@ -1,0 +1,8 @@
+name: agf-link
+version: 1.0.0
+main: gg.scala.agf.link.AgfLinkSpigotPlugin
+
+author: Scala
+website: https://scala.gg
+
+depend: [Cubed, Lemon, helper]
