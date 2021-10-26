@@ -19,7 +19,7 @@ import org.bukkit.inventory.InventoryView
  * @since 10/26/2021
  */
 class AgfGameInfoDisplayMenu(
-    val agfGameType: AgfGameType
+    private val agfGameType: AgfGameType
 ) : Menu("Servers ${Constants.DOUBLE_ARROW_RIGHT} ${agfGameType.formatted}")
 {
     init
